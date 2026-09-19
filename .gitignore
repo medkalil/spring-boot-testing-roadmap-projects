@@ -1,0 +1,129 @@
+# ==========================================
+# Java / Spring Boot / Maven
+# ==========================================
+
+**/target/
+**/*.class
+
+# Maven generated files
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/release.properties
+
+# Gradle (if used)
+**/.gradle/
+**/build/
+
+# ==========================================
+# Node.js / React
+# ==========================================
+
+**/node_modules/
+**/dist/
+**/.vite/
+**/.next/
+**/.cache/
+
+# npm
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# React testing / coverage
+**/coverage/
+
+# ==========================================
+# Environment variables / Secrets
+# ==========================================
+
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Keep example environment files
+!**/.env.example
+
+# Spring local configuration
+**/application-local.properties
+**/application-local.yml
+**/application-local.yaml
+
+# ==========================================
+# IDEs
+# ==========================================
+
+# IntelliJ IDEA
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+
+# Eclipse
+**/.classpath
+**/.project
+**/.settings/
+
+# VS Code
+**/.vscode/
+
+# NetBeans
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
+
+# ==========================================
+# Logs
+# ==========================================
+
+**/*.log
+**/logs/
+
+# ==========================================
+# Test / Coverage
+# ==========================================
+
+**/jacoco/
+**/jacoco.exec
+
+# ==========================================
+# OS files
+# ==========================================
+
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/Thumbs.db
+
+# ==========================================
+# Temporary files
+# ==========================================
+
+**/*.tmp
+**/*.temp
+**/*.swp
+**/*~
+
+# ==========================================
+# Docker
+# ==========================================
+
+# Local Docker overrides
+**/docker-compose.override.yml
+
+# ==========================================
+# Certificates / Secrets
+# ==========================================
+
+**/*.pem
+**/*.key
+**/*.p12
+**/*.jks
+**/secrets/
+**/credentials/
