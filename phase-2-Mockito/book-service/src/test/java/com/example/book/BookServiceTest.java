@@ -18,7 +18,6 @@ import static org.mockito.Mockito.when;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.never;
 
 @DisplayName("Book Service Tests")
