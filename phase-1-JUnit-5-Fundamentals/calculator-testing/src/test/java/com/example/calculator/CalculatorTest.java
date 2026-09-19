@@ -69,7 +69,20 @@ class CalculatorTest {
                     () -> assertEquals(-12, calculator.multiply(3, -4))
             );
         }
+
+        @ParameterizedTest(name = "{0} * {1} = {2}")
+        @CsvSource({
+                "1, 1, 1",
+                "5, 3, 15",
+                "-1, -1, 1",
+                "-5, 10, -50",
+                "0, 0, 0"
+        })
+        void parametrizedMultiplcation(int a, int b, int expected){
+            assertEquals(expected, calculator.multiply(a, b));
+        }
     }
+
 
     @Nested
     @DisplayName("Division Tests")
