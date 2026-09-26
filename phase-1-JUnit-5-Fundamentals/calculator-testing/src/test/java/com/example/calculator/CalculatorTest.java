@@ -54,6 +54,12 @@ class CalculatorTest {
         void testSubtract() {
             assertEquals(5, calculator.subtract(10, 5));
         }
+
+        @Test
+        @DisplayName("Should subtract two negative numbers correctly")
+        void testSubtractNegativeNumbers() {
+            assertEquals(-10, calculator.subtract(-5, 5));
+        }
     }
 
     @Nested
