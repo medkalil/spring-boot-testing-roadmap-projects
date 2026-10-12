@@ -77,7 +77,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
  *
  *      That proves the request died in the filter chain, not in the service.
  *
- * 4) @WithMockUser does NOT test authentication
+ * 4) @WithMockUser does NOT test authentication, it bypasses it
  *      It injects a ready-made Authentication into the SecurityContext and jumps
  *      straight to the authorization check. Real JWT authentication (login ->
  *      Bearer token -> AuthTokenFilter) is implemented in this project and
@@ -310,7 +310,7 @@ class UserControllerSecurityTest {
     //  *                                     assert SecurityContextHolder has
     //  *                                     "john" and authority "ROLE_USER"
     // RQ IMPORTANT: because the conetxt used in the mockmvc request, is not necessarily the same context available afterward in your test thread. 
-    // that why thi will fail if you run it: becasu authentication will be null (SecurityContextHolder.getContext().getAuthentication()) 
+    // that why this will fail if you run it: becasu authentication will be null (SecurityContextHolder.getContext().getAuthentication()) 
     
     /*
         For learning purposes, you could temporarily create an endpoint specifically for testing:
