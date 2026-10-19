@@ -1,0 +1,21 @@
+# Dedicated PostgreSQL for the E2E tests. Started automatically by Playwright:
+# e2e/scripts/start-backend.sh brings it up, waits for readiness, then starts the
+# Spring Boot API with the "e2e" profile (which points at this database).
+#
+# Port note: the host port is 5433, because the machine's local PostgreSQL
+# already owns 5432. Inside the container PostgreSQL still listens on 5432.
+services:
+  e2e-db:
+    image: postgres:16
+    container_name: ecommerce-e2e-db
+    environment:
+      POSTGRES_DB: ecommerce_e2e
+      POSTGRES_USER: ecommerce
+      POSTGRES_PASSWORD: ecommerce
+    ports:
+      - "5433:5432"
+    volumes:
+      - e2e-pgdata:/var/lib/postgresql/data
+
+volumes:
+  e2e-pgdata:

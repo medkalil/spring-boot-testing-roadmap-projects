@@ -1,0 +1,1 @@
+export const money = (value: number): string => `$${value.toFixed(2)}`;

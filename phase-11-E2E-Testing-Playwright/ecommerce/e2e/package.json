@@ -1,0 +1,21 @@
+{
+  "name": "ecommerce-e2e",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Phase 11 - Playwright E2E tests for the e-commerce app",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:trace": "playwright show-trace",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.49.1"
+  },
+  "_comment trace": "exp of running trace: npm run test:trace ./test-results/zz-verify-simulated-checko-d9a8e-n-error-never-false-success-chromium/trace.zip",
+  "_comment report": "npm run report: it opens the html report in the browser only if reporter: html, in the playwright.config.ts",
+  "_comment run sigle test": "npm run test zz-verify.spec.ts",
+  "_comment run sequentoially with 1 worker": "npm run test --workers=1",
+  "_comment run a specific test by its title": "npm run test -g 'customer can buy a product'"
+}
