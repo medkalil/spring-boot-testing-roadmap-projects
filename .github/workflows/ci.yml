@@ -1,0 +1,65 @@
+name: Phase 12 CI
+
+# Monorepo setup: this workflow only runs for changes in the phase-12 folder
+# (and for changes to the workflow file itself). Everything a step executes
+# happens inside that folder via the job-level working-directory default -
+# except upload-artifact/docker build, which set their paths explicitly.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'phase-12-CI-Testing-GitHub-Actions/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'phase-12-CI-Testing-GitHub-Actions/**'
+      - '.github/workflows/ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: phase-12-CI-Testing-GitHub-Actions
+
+jobs:
+  verify:
+    name: Build and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+          cache-dependency-path: phase-12-CI-Testing-GitHub-Actions/pom.xml
+
+      - name: Prepare Maven wrapper
+        run: chmod +x mvnw
+
+      - name: Run unit and integration tests
+        run: ./mvnw --batch-mode --no-transfer-progress clean verify
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            phase-12-CI-Testing-GitHub-Actions/target/surefire-reports/
+            phase-12-CI-Testing-GitHub-Actions/target/failsafe-reports/
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Build Docker image
+        working-directory: .
+        run: docker build -t todo-api:${{ github.sha }} phase-12-CI-Testing-GitHub-Actions
